@@ -114,7 +114,7 @@ function handleSubmit(e) {
           </button>
         </div>
       </form>
-    <Products  handleEdit={handleEdit}/>
+    <Products  handleEdit={handleEdit} />
     </div>
    )
  }

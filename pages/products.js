@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, deleteProduct } from "../redux/actions/actions";
 
+
 const Products = (props) => {
   const dispatch = useDispatch();
   const { handleEdit } = props;

@@ -8,6 +8,7 @@ import {
 
   const initialState = {
     products: [],
+    product: {},
     loading: true,
   };
   
@@ -31,9 +32,13 @@ import {
       case EDIT_PRODUCTS:
         return {
           ...state,
-          products: state.products.concat(action.payload),
-          loading: false,
-        };
+          products: state.products.map((product) =>
+          Number(product.id) === Number(action.payload.id)
+            ? (product = action.payload)
+            : product
+        ),
+        loading: false,
+      };
   
         case DELETE_PRODUCTS:
           const filteredState = state.products.filter(
