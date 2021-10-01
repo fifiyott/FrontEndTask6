@@ -42,7 +42,7 @@ import {
   
         case DELETE_PRODUCTS:
           const filteredState = state.products.filter(
-            (product) => product.id !== action.payload.id
+            (product) => Number(product.id) !== Number(action.payload.id)
           );
           return { ...state, products: filteredState };
     
