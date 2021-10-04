@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addProduct, editProduct } from "../redux/actions/actions";
 import Styles from '../styles/Home.module.css'
 import Products from "./products";
+import Image from "next/image";
 
 
 export default function Home() {
@@ -15,6 +16,8 @@ export default function Home() {
   const [formInput, setFormInput] = useState({
     title :"",
     price:"",
+    description: "",
+    image: "",
     category:"",
   });
 
@@ -33,6 +36,12 @@ function handleSubmit(e) {
   if (formInput.price === ""){
     return false;
   }
+  if (formInput.description === ""){
+    return false;
+  }
+  if (formInput.image === ""){
+    return false;
+  }
   if (formInput.category === ""){
     return false;
   }
@@ -43,6 +52,8 @@ function handleSubmit(e) {
           id : updateData.id,
           title : formInput.title,
           price : formInput.price,
+          description: formInput.description,
+          image: formInput.image,
           category : formInput.category,
         }));
       alert("Data Berhasil Diedit..");
@@ -52,12 +63,14 @@ function handleSubmit(e) {
       addProduct({
         title: formInput.title,
         price : formInput.price,
+        description: formInput.description,
+        image: formInput.image,
         category : formInput.category,
       })
     );
     alert("Data Berhasil Tersimpan !");
   }
-    setFormInput({title:"", price: "", category:""});
+    setFormInput({title:"", price: "", description: "", image: "", category:""});
     setUpdateData({ id: null, status: false });
   };
 
@@ -66,6 +79,8 @@ function handleSubmit(e) {
     setFormInput({
       title: product.title,
       price : product.price,
+      description : product.description,
+      image : product.image,
       category : product.category,
     });
     setUpdateData({ id: product.id, status: true });
@@ -83,7 +98,7 @@ function handleSubmit(e) {
       <form onSubmit={handleSubmit} className="form-universal">
         <div className="form-group">
           <input 
-            type="text"  
+            type="input"  
             onChange={handleChange}
             value={formInput.title} 
             name="title"
@@ -92,7 +107,7 @@ function handleSubmit(e) {
         </div>
         <div className="form-group">
           <input 
-            type="text"  
+            type="input"  
             onChange={handleChange}
             value={formInput.price} 
             name="price" 
@@ -101,7 +116,25 @@ function handleSubmit(e) {
         </div>
         <div className="form-group">
           <input 
-            type="text"  
+            type="input"  
+            onChange={handleChange}
+            value={formInput.description} 
+            name="description" 
+            className="input"
+            placeholder="Description"/>
+        </div>
+        <div className="form-group">
+          <input 
+            type="input"  
+            onChange={handleChange}
+            value={formInput.image} 
+            name="image" 
+            className="input"
+            placeholder="Image"/>
+        </div>
+        <div className="form-group">
+          <input 
+            type="input"  
             onChange={handleChange}
             value={formInput.category} 
             name="category"
@@ -114,7 +147,7 @@ function handleSubmit(e) {
           </button>
         </div>
       </form>
-    <Products  handleEdit={handleEdit} />
+    <Products handleEdit={handleEdit} />
     </div>
    )
  }
