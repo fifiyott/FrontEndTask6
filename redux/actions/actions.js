@@ -4,6 +4,8 @@ import {
     DELETE_PRODUCTS,
     GET_PRODUCTS,
     PRODUCTS_ERROR,
+    GET_USERS,
+    USERS_ERROR,
   } from "../reducers/types";
   import axios from "axios";
 
@@ -76,6 +78,23 @@ import {
     } catch (error) {
       dispatch({
         type: PRODUCTS_ERROR,
+        payload: error,
+      });
+    }
+  };
+
+  // bagian admin user
+  export const getUsers = () => async (dispatch) => {
+    try {
+      const res = await axios.get(`https://fakestoreapi.com/users`);
+      dispatch({
+        type: GET_USERS,
+        payload: res.data,
+      });
+      console.log(res);
+    } catch (error) {
+      dispatch({
+        type: USERS_ERROR,
         payload: error,
       });
     }

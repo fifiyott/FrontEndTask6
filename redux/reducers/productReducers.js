@@ -40,18 +40,18 @@ import {
         loading: false,
       };
   
-        case DELETE_PRODUCTS:
-          const filteredState = state.products.filter(
-            (product) => Number(product.id) !== Number(action.payload.id)
-          );
-          return { ...state, products: filteredState };
-    
-        case PRODUCTS_ERROR:
-          return {
-            loading: false,
-            error: action.payload,
-          };
-  
+      case DELETE_PRODUCTS:
+        const filteredState = state.products.filter(
+          (product) => Number(product.id) !== Number(action.payload.id)
+        );
+        return { ...state, products: filteredState };
+
+      case PRODUCTS_ERROR:
+        return {
+          loading: false,
+          error: action.payload,
+        };
+
       default:
         return state;
     }
