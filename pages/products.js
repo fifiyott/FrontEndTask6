@@ -10,6 +10,9 @@ const Products = (props) => {
   const allProductsData = useSelector((state) => state.Products);
   const { loading, error, products } = allProductsData;
   const [ searchFilter, setSearchFilter ] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [editModalIsOpen, seteditModalIsOpen] = useState(false);
+
 
   useEffect(() => {
     dispatch(getProducts());
@@ -59,7 +62,7 @@ const Products = (props) => {
                 <p>{product.category}</p>
             </div>
             <div className="flex-right">
-                <button className="btnEdit" onClick={() => handleEdit(product)}>Edit</button>
+                <button className="btnEdit" onClick={() => seteditModalIsOpen(true) & handleEdit(product)}>Edit</button>
                 {/* <button className="btnDel" onClick={() => handleDelete(product.id)}>Delete</button> */}
                 <button className="btnDel" onClick={() =>
                         dispatch(

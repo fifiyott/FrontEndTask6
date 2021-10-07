@@ -19,7 +19,7 @@ const Users = () => {
     <section className="product">
       <div className="list-group">
         <div className="list-header">
-            <h1 className="headerlist">List</h1>
+            <h1 className="headerlist">Database Account</h1>
             <div className="filter-post">
                 <input type="text"
                     className="filter"
@@ -39,7 +39,13 @@ const Users = () => {
         .filter((val) => {
           if( searchFilter === "") {
             return val;
-          } else if ( val.name.toLowerCase().includes(searchFilter.toLocaleLowerCase())) {
+          } else if ( val.name.firstname.toLowerCase().includes(searchFilter.toLocaleLowerCase())) {
+            return val;
+          } else if ( val.name.lastname.toLowerCase().includes(searchFilter.toLocaleLowerCase())) {
+            return val;
+          } else if ( val.email.toLowerCase().includes(searchFilter.toLocaleLowerCase())) {
+            return val;
+          } else if ( val.username.toLowerCase().includes(searchFilter.toLocaleLowerCase())) {
             return val;
           }
         }).map((user) => (
@@ -50,7 +56,6 @@ const Users = () => {
                 <p>Password : {user.password}</p>
                 <p>Email : {user.email}</p>
                 <p>Phone : {user.phone}</p>
-
             </div>
             </div>
           ))}
