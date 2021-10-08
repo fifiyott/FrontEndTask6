@@ -10,8 +10,8 @@ const Products = (props) => {
   const allProductsData = useSelector((state) => state.Products);
   const { loading, error, products } = allProductsData;
   const [ searchFilter, setSearchFilter ] = useState('');
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [editModalIsOpen, seteditModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [editModalIsOpen, seteditModalIsOpen] = useState(false);
 
 
   useEffect(() => {
